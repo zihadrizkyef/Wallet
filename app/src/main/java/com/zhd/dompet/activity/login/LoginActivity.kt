@@ -19,12 +19,14 @@ class LoginActivity : BaseActivity() {
     private val repository by lazy { UserRepository() }
     private val adapter: UserAdapter by lazy {
         UserAdapter().apply {
-            onClickListener = { _, item ->
-                if (item.pin.isNotEmpty()) {
-                    showPinDialog(item)
+            onClickListener = { _, user ->
+                if (user.pin.isNotEmpty()) {
+                    showPinDialog(user)
                 } else {
+                    repository.setUser(user)
+
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                    intent.putExtra("id", item.id)
+                    intent.putExtra("id", user.id)
                     startActivity(intent)
                 }
             }
@@ -36,6 +38,9 @@ class LoginActivity : BaseActivity() {
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+//        repository.createUser("Ayah", "dompetayah")
+//        repository.createUser("Bunda", "")
 
         setupView()
         getData()
@@ -59,6 +64,8 @@ class LoginActivity : BaseActivity() {
             dialog.dismiss()
             val pin = viewInflated.findViewById<TextInputEditText>(R.id.inputPin).text.toString()
             if (pin == user.pin) {
+                repository.setUser(user)
+
                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
                 intent.putExtra("id", user.id)
                 startActivity(intent)

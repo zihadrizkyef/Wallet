@@ -23,6 +23,10 @@ class UserRepository {
         )
     }
 
+    fun setUser(user: User) {
+        UserPref.activeUser = user
+    }
+
 
     fun deleteUser(id: Long) = Realm.getDefaultInstance().executeTransaction { realm ->
         realm.where(User::class.java)

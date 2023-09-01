@@ -15,7 +15,6 @@ class AddWalletActivity : BaseActivity() {
         binding.buttonSave.setOnClickListener {
             WalletRepository().createWallet(
                 binding.inputName.text.toString(),
-                binding.inputPin.text.toString(),
             )
 
             finish()

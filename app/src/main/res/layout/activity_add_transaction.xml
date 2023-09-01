@@ -82,7 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:gravity="top"
-            android:inputType="textCapWords" />
+            android:inputType="textCapSentences" />
 
     </com.google.android.material.textfield.TextInputLayout>
 

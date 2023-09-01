@@ -26,9 +26,12 @@ class TransactionRepository {
         )
     }
 
-    fun getAllTransactionById(walletId: Long): List<Transaction> = Realm.getDefaultInstance().let { realm ->
+    fun getTransactionsByWalletId(walletId: Long): List<Transaction> = Realm.getDefaultInstance().let { realm ->
         realm.copyFromRealm(
-            realm.where(Wallet::class.java).equalTo("id", walletId).findFirst()!!.transactions
+            realm.where(Wallet::class.java)
+                .equalTo("id", walletId)
+                .findFirst()!!
+                .transactions
         )
     }
 
@@ -38,9 +41,10 @@ class TransactionRepository {
         }
     }
 
-    fun getTotalBalance(): Double =
+    fun getUserTotalBalance(walletIds: List<Long>): Double =
         Realm.getDefaultInstance()
             .where(Transaction::class.java)
+            .`in`("id", walletIds.toTypedArray())
             .sum("value")
             .toDouble()
 

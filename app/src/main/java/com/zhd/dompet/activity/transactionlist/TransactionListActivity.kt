@@ -52,11 +52,11 @@ class TransactionListActivity : BaseActivity() {
     }
 
     private fun getData() {
-        val transactions = repository.getAllTransactionById(walletId)
+        val transactions = repository.getTransactionsByWalletId(walletId)
         adapter.submitList(transactions)
         binding.recyclerView.isVisible = transactions.isNotEmpty()
         binding.textNoItem.isVisible = transactions.isEmpty()
         binding.textValueTotalBalance.text = transactions.sumOf { it.value }.toCurrency()
-        binding.textWalletName.text = walletRepository.getById(walletId).name
+        binding.textWalletName.text = walletRepository.getSingleById(walletId).name
     }
 }

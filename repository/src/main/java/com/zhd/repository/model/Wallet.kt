@@ -10,11 +10,11 @@ import java.util.*
 open class Wallet: RealmObject() {
     @PrimaryKey
     var id = 0L
+    var userId = 0L
 
     var name = ""
     var transactions: RealmList<Transaction> = realmListOf()
     var date = Date()
-    var pin = ""
 
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -24,9 +24,17 @@ open class Wallet: RealmObject() {
         if (name != other.name) return false
         if (transactions != other.transactions) return false
         if (date != other.date) return false
-        if (pin != other.pin) return false
 
         return true
+    }
+
+    override fun hashCode(): Int {
+        var result = id.hashCode()
+        result = 31 * result + userId.hashCode()
+        result = 31 * result + name.hashCode()
+        result = 31 * result + transactions.hashCode()
+        result = 31 * result + date.hashCode()
+        return result
     }
 
 }

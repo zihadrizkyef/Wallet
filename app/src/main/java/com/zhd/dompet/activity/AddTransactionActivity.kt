@@ -22,7 +22,7 @@ class AddTransactionActivity : BaseActivity() {
         setContentView(binding.root)
 
         val walletId = intent.getLongExtra("id", 0L)
-        binding.textWalletName.text = walletRepository.getById(walletId).name
+        binding.textWalletName.text = walletRepository.getSingleById(walletId).name
 
         binding.buttonSymbol.setOnClickListener {
             if (symbol == "+") {
