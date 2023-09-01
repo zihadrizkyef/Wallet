@@ -3,32 +3,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".activity.main.MainActivity">
+    android:layout_height="match_parent">
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/textTitle"
+        android:id="@+id/textWalletName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:paddingVertical="16dp"
-        android:text="@string/wallet"
+        android:padding="16dp"
         android:textColor="?attr/colorPrimary"
         android:textSize="32sp"
         app:fontFamily="@font/roboto_black"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Wallet 1" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:padding="8dp"
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/textHintTotalBalance"
-        app:layout_constraintTop_toBottomOf="@id/textTitle"
-        app:spanCount="2"
-        tools:listitem="@layout/item_wallet" />
+        android:padding="16dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textWalletName"
+        tools:listitem="@layout/item_transaction" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textNoItem"
@@ -36,11 +33,11 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="16dp"
-        android:text="@string/no_wallet_info"
+        android:text="@string/no_transaction_info"
         android:textColor="@color/grey"
         android:textSize="32sp"
         app:fontFamily="@font/roboto_light"
-        app:layout_constraintTop_toBottomOf="@id/textTitle" />
+        app:layout_constraintTop_toBottomOf="@id/textWalletName" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textHintTotalBalance"

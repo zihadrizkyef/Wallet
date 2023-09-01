@@ -1,13 +1,7 @@
 <resources>
-    <string name="app_name">Dompet</string>
-    <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="app_name">Wallet</string>
 
-    <string name="lorem_ipsum">
+    <string name="lorem_ipsum" translatable="false">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
         dui nec risus. Maecenas non sodales nisi, vel dictum dolor. Class aptent taciti sociosqu ad
@@ -43,4 +37,22 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+
+    <string name="button">Button</string>
+    <string name="name">Name</string>
+    <string name="save">Save</string>
+    <string name="add_wallet">Add Wallet</string>
+    <string name="wallet">Wallet</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="total">Total</string>
+    <string name="no_wallet_info">You don\'t have any wallet, please add wallet by click + button</string>
+    <string name="no_transaction_info">You don\'t have any transaction, please add transaction by click + button</string>
+    <string name="balance_n">Balance %s</string>
+    <string name="delete">Delete</string>
+    <string name="note">Note</string>
+    <string name="total_balance">Total balance</string>
+    <string name="pin">PIN</string>
+    <string name="input_pin">Input PIN</string>
+    <string name="login">Login</string>
 </resources>

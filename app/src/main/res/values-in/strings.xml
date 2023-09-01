@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dompet</string>
+
+    <string name="button">Tombol</string>
+    <string name="name">Nama</string>
+    <string name="save">Simpan</string>
+    <string name="add_wallet">Tambah Dompet</string>
+    <string name="wallet">Dompet</string>
+    <string name="title">Judul</string>
+    <string name="description">Deskripsi</string>
+    <string name="total">Total</string>
+    <string name="no_wallet_info">Belum ada dompet, silahkan tambahkan dompet dengan menekan tombol +</string>
+    <string name="no_transaction_info">Belum ada transaksi, silahkan tambahkan transaksi dengan menekan tombol +</string>
+    <string name="balance_n">Saldo %s</string>
+    <string name="delete">Hapus</string>
+    <string name="note">Catatan</string>
+    <string name="total_balance">Total saldo</string>
+    <string name="pin">PIN</string>
+    <string name="input_pin">Masukan PIN</string>
+    <string name="login">Login</string>
+</resources>
