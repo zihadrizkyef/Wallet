@@ -26,13 +26,24 @@ class TransactionRepository {
         )
     }
 
-    fun getTransactionsByWalletId(walletId: Long): List<Transaction> = Realm.getDefaultInstance().let { realm ->
-        realm.copyFromRealm(
+    fun getTransactionsFiltered(walletId: Long, startDate: Date?, endDate: Date?): List<Transaction> = Realm.getDefaultInstance().let { realm ->
+        var list = realm.copyFromRealm(
             realm.where(Wallet::class.java)
                 .equalTo("id", walletId)
                 .findFirst()!!
                 .transactions
         )
+        if (startDate != null) {
+            list = list.filter {
+                it.date > startDate
+            }
+        }
+        if (endDate != null) {
+            list = list.filter {
+                it.date < endDate
+            }
+        }
+        list
     }
 
     fun getTransactionById(transactionId: Long): Transaction? = Realm.getDefaultInstance().let { realm ->
