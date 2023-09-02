@@ -19,6 +19,8 @@ import com.zhd.dompet.activity.BaseActivity
 import com.zhd.dompet.activity.RegisterActivity
 import com.zhd.dompet.activity.main.MainActivity
 import com.zhd.dompet.databinding.ActivityLoginBinding
+import com.zhd.dompet.utils.Extra
+import com.zhd.dompet.utils.ExtraAction
 import com.zhd.repository.model.User
 import com.zhd.repository.repo.UserRepository
 
@@ -33,21 +35,29 @@ class LoginActivity : BaseActivity() {
                 if (user.pin.isNotEmpty()) {
                     showPinDialog(user)
                 } else {
-                    repository.setUser(user)
+                    repository.setActiveUser(user)
 
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     intent.putExtra("id", user.id)
-                    startActivity(intent)
+                    mainLauncher.launch(intent)
                 }
             }
         }
     }
 
+    private val mainLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_OK) {
+                if (it.data?.getStringExtra(Extra.ACTION) == ExtraAction.DELETE) {
+                    Snackbar.make(binding.root, R.string.delete_account_success, Snackbar.LENGTH_LONG).show()
+                }
+            }
+        }
+
     private val registerLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == RESULT_OK) {
                 Snackbar.make(binding.root, R.string.register_success, Snackbar.LENGTH_LONG).show()
-                getData()
             }
         }
 
@@ -58,6 +68,10 @@ class LoginActivity : BaseActivity() {
         setContentView(binding.root)
 
         setupView()
+    }
+
+    override fun onResume() {
+        super.onResume()
         getData()
     }
 
@@ -98,11 +112,11 @@ class LoginActivity : BaseActivity() {
             val inputPassword = viewInflated.findViewById<TextInputEditText>(R.id.inputPin)
             val password = inputPassword.text.toString()
             if (password == user.pin) {
-                repository.setUser(user)
+                repository.setActiveUser(user)
 
                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
                 intent.putExtra("id", user.id)
-                startActivity(intent)
+                mainLauncher.launch(intent)
                 dialog.dismiss()
             } else {
                 inputPassword.error = getString(R.string.wrong_password)

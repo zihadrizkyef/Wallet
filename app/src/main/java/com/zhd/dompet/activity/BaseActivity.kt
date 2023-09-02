@@ -19,4 +19,8 @@ open class BaseActivity : AppCompatActivity() {
         Snackbar.make(view, text, Snackbar.LENGTH_LONG).show()
     }
 
+    fun showSuccess(view: View, @StringRes resId: Int) {
+        showSuccess(view, getString(resId))
+    }
+
 }

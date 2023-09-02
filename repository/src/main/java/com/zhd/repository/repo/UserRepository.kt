@@ -23,10 +23,25 @@ class UserRepository {
         )
     }
 
-    fun setUser(user: User) {
+    fun updateActiveUser(name: String, password: String) = Realm.getDefaultInstance().executeTransaction { realm ->
+        val activeUser = UserPref.activeUser!!.apply {
+            this.name = name
+            this.pin = password
+        }
+        realm.insertOrUpdate(activeUser)
+        val updatedActiveUser = realm.where(User::class.java)
+            .equalTo("id", activeUser.id)
+            .findFirst()!!
+        setActiveUser(realm.copyFromRealm(updatedActiveUser))
+    }
+
+    fun setActiveUser(user: User) {
         UserPref.activeUser = user
     }
 
+    fun deleteActiveUser() = deleteUser(UserPref.activeUser!!.id)
+
+    fun getActiveUser() = UserPref.activeUser
 
     fun deleteUser(id: Long) = Realm.getDefaultInstance().executeTransaction { realm ->
         realm.where(User::class.java)

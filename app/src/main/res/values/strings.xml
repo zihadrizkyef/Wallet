@@ -64,4 +64,10 @@
     <string name="register_success">Register success!</string>
     <string name="name_required">Name <font color='#FF0000'>*</font></string>
     <string name="wrong_password">Wrong password!</string>
+    <string name="delete_account">Delete account</string>
+    <string name="delete_account_question">Are you sure to delete account?</string>
+    <string name="yes">Yes</string>
+    <string name="cancel">Cancel</string>
+    <string name="update_success">Update success!</string>
+    <string name="delete_account_success">Delete account success!</string>
 </resources>

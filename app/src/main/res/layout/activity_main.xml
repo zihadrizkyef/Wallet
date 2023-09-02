@@ -9,20 +9,35 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textTitle"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:paddingVertical="16dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
         android:text="@string/wallet"
         android:textColor="?attr/colorPrimary"
         android:textSize="32sp"
         app:fontFamily="@font/roboto_black"
+        app:layout_constraintEnd_toStartOf="@+id/buttonSetting"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/buttonSetting"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="16dp"
+        app:contentPadding="8dp"
+        app:layout_constraintBottom_toBottomOf="@id/textTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/textTitle"
+        app:srcCompat="@drawable/ic_setting"
+        app:tint="?attr/colorPrimary" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="8dp"
         android:padding="8dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/textHintTotalBalance"
@@ -34,6 +49,7 @@
         android:id="@+id/textNoItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:gravity="center"
         android:padding="16dp"
         android:text="@string/no_wallet_info"
