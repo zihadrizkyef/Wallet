@@ -73,4 +73,5 @@
     <string name="hi_n">Hi %s!</string>
     <string name="delete_wallet">Delete wallet</string>
     <string name="delete_wallet_question">Are you sure to delete this wallet?</string>
+    <string name="delete_wallet_success">Delete wallet success!</string>
 </resources>

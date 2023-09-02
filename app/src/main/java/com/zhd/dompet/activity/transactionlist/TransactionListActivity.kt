@@ -36,6 +36,7 @@ class TransactionListActivity : BaseActivity() {
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             if (it.resultCode == RESULT_OK) {
                 if (it.data?.getStringExtra(Extra.ACTION) == ExtraAction.DELETE) {
+                    setResult(RESULT_OK, it.data)
                     finish()
                 }
             }

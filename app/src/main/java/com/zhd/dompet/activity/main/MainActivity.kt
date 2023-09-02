@@ -28,10 +28,19 @@ class MainActivity : BaseActivity() {
             onClickListener = { _, item ->
                 val intent = Intent(this@MainActivity, TransactionListActivity::class.java)
                 intent.putExtra("id", item.id)
-                startActivity(intent)
+                walletLauncher.launch(intent)
             }
         }
     }
+
+    private val walletLauncher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+            if (it.resultCode == RESULT_OK) {
+                if (it.data?.getStringExtra(Extra.ACTION) == ExtraAction.DELETE) {
+                    showSuccess(binding.root, R.string.delete_wallet_success)
+                }
+            }
+        }
 
     private val profileLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         if (it.resultCode == RESULT_OK) {

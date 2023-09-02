@@ -37,4 +37,5 @@
     <string name="hi_n">Halo %s!</string>
     <string name="delete_wallet">Hapus dompet</string>
     <string name="delete_wallet_question">Anda yakin ingin menghapus dompet ini</string>
+    <string name="delete_wallet_success">Berhasil menghapus dompet!</string>
 </resources>
