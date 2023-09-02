@@ -8,7 +8,7 @@ import com.zhd.dompet.activity.AddWalletActivity
 import com.zhd.dompet.activity.BaseActivity
 import com.zhd.dompet.activity.transactionlist.TransactionListActivity
 import com.zhd.dompet.databinding.ActivityMainBinding
-import com.zhd.dompet.toCurrency
+import com.zhd.dompet.utils.toCurrency
 import com.zhd.repository.repo.TransactionRepository
 import com.zhd.repository.repo.WalletRepository
 

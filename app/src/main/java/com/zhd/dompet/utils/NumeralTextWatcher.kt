@@ -1,9 +1,8 @@
-package com.zhd.dompet
+package com.zhd.dompet.utils
 
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.EditText
-import com.zhd.dompet.toCurrency
 
 class NumeralTextWatcher(editText: EditText, currency: String = "Rp", isDecimal: Boolean = true, decimalDigit: Int = 5, valueChangeListener: ((String) -> Unit)? = null) : TextWatcher {
     private val editText: EditText

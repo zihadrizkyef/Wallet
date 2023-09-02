@@ -6,7 +6,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zhd.dompet.databinding.ItemUserBinding
-import com.zhd.dompet.toCurrency
 import com.zhd.repository.model.User
 
 class UserAdapter : ListAdapter<User, UserAdapter.ViewHolder>(object : DiffUtil.ItemCallback<User>() {

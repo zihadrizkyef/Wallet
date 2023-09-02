@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zhd.dompet.databinding.ItemWalletBinding
-import com.zhd.dompet.toCurrency
+import com.zhd.dompet.utils.toCurrency
 import com.zhd.repository.model.Wallet
 
 class WalletAdapter : ListAdapter<Wallet, WalletAdapter.ViewHolder>(object : DiffUtil.ItemCallback<Wallet>() {

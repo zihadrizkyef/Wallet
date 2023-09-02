@@ -2,7 +2,7 @@ package com.zhd.dompet.activity
 
 import android.os.Bundle
 import com.zhd.dompet.databinding.ActivityTransactionDetailBinding
-import com.zhd.dompet.toCurrency
+import com.zhd.dompet.utils.toCurrency
 import com.zhd.repository.repo.TransactionRepository
 
 class TransactionDetailActivity : BaseActivity() {

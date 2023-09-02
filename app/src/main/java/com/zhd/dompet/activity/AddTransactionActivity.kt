@@ -3,10 +3,10 @@ package com.zhd.dompet.activity
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import com.zhd.dompet.NumeralTextWatcher
+import com.zhd.dompet.utils.NumeralTextWatcher
 import com.zhd.dompet.R
 import com.zhd.dompet.databinding.ActivityAddTransactionBinding
-import com.zhd.dompet.fromCurrency
+import com.zhd.dompet.utils.fromCurrency
 import com.zhd.repository.repo.TransactionRepository
 import com.zhd.repository.repo.WalletRepository
 

@@ -1,10 +1,8 @@
 package com.zhd.dompet.activity
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import com.zhd.dompet.R
 import com.zhd.dompet.databinding.ActivityRegisterBinding
-import com.zhd.dompet.hideKeyboard
 import com.zhd.repository.repo.UserRepository
 
 class RegisterActivity : BaseActivity() {

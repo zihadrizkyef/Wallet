@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.zhd.dompet.R
 import com.zhd.dompet.databinding.ItemTransactionBinding
-import com.zhd.dompet.toCurrency
+import com.zhd.dompet.utils.toCurrency
 import com.zhd.repository.model.Transaction
 import java.text.SimpleDateFormat
 import java.util.*
