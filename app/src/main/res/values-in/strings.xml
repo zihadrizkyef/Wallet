@@ -18,5 +18,14 @@
     <string name="total_balance">Total saldo</string>
     <string name="pin">PIN</string>
     <string name="input_pin">Masukan PIN</string>
+    <string name="input_password">Masukan sandi</string>
     <string name="login">Login</string>
+    <string name="register">Daftar</string>
+    <string name="password">Sandi</string>
+    <string name="name_cannot_empty">Nama tidak boleh kosong</string>
+    <string name="password_cannot_empty">Sandi tidak boleh kosong</string>
+    <string name="account_not_found_register"><![CDATA[Akun tidak ditemukan? <b>Daftar</b>]]></string>
+    <string name="register_success">Pendaftaran sukses!</string>
+    <string name="name_required">Nama <font color='#FF0000'>*</font></string>
+    <string name="wrong_password">Sandi salah!</string>
 </resources>

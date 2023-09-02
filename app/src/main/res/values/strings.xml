@@ -54,5 +54,14 @@
     <string name="total_balance">Total balance</string>
     <string name="pin">PIN</string>
     <string name="input_pin">Input PIN</string>
+    <string name="input_password">Input password</string>
     <string name="login">Login</string>
+    <string name="register">Register</string>
+    <string name="password">Password</string>
+    <string name="name_cannot_empty">Name cannot be empty</string>
+    <string name="password_cannot_empty">Password cannot be empty</string>
+    <string name="account_not_found_register"><![CDATA[Account not found? <b>Register</b>]]></string>
+    <string name="register_success">Register success!</string>
+    <string name="name_required">Name <font color='#FF0000'>*</font></string>
+    <string name="wrong_password">Wrong password!</string>
 </resources>
