@@ -8,6 +8,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.zhd.dompet.R
 import com.zhd.dompet.databinding.ActivityUserProfileBinding
+import com.zhd.dompet.dialog.PasswordDialog
 import com.zhd.dompet.utils.Extra
 import com.zhd.dompet.utils.ExtraAction
 import com.zhd.repository.repo.UserRepository
@@ -44,7 +45,18 @@ class UserProfileActivity : BaseActivity() {
                 .setTitle(R.string.delete_account_question)
                 .setPositiveButton(R.string.yes) { _, _ ->
                     if (repository.getActiveUser()!!.pin.isNotEmpty()) {
-                        showPinDialog()
+                        PasswordDialog(this).show(repository.getActiveUser()!!.pin) { isSuccess ->
+                            if (isSuccess) {
+                                repository.deleteActiveUser()
+                                val intent = Intent()
+                                intent.putExtra(Extra.ACTION, ExtraAction.DELETE)
+                                setResult(RESULT_OK, intent)
+
+                                finish()
+                            } else {
+                                showError(binding.root, R.string.wrong_password)
+                            }
+                        }
                     } else {
                         repository.deleteActiveUser()
                         val intent = Intent()
@@ -56,28 +68,5 @@ class UserProfileActivity : BaseActivity() {
                 }.setNegativeButton(R.string.cancel) { dialog, _ -> dialog.dismiss() }
                 .show()
         }
-    }
-
-    private fun showPinDialog() {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle(R.string.input_pin)
-        val viewInflated = LayoutInflater.from(this).inflate(R.layout.dialog_input_pin, null, false)
-        builder.setView(viewInflated)
-        builder.setPositiveButton(android.R.string.ok) { dialog, _ ->
-            val inputPassword = viewInflated.findViewById<TextInputEditText>(R.id.inputPin)
-            val password = inputPassword.text.toString()
-            if (password == repository.getActiveUser()!!.pin) {
-                repository.deleteActiveUser()
-                val intent = Intent()
-                intent.putExtra(Extra.ACTION, ExtraAction.DELETE)
-                setResult(RESULT_OK, intent)
-
-                finish()
-            } else {
-                inputPassword.error = getString(R.string.wrong_password)
-            }
-        }
-        builder.setNegativeButton(android.R.string.cancel) { dialog, _ -> dialog.cancel() }
-        builder.show()
     }
 }

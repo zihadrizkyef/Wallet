@@ -19,6 +19,7 @@ import com.zhd.dompet.activity.BaseActivity
 import com.zhd.dompet.activity.RegisterActivity
 import com.zhd.dompet.activity.main.MainActivity
 import com.zhd.dompet.databinding.ActivityLoginBinding
+import com.zhd.dompet.dialog.PasswordDialog
 import com.zhd.dompet.utils.Extra
 import com.zhd.dompet.utils.ExtraAction
 import com.zhd.repository.model.User
@@ -33,12 +34,21 @@ class LoginActivity : BaseActivity() {
         UserAdapter().apply {
             onClickListener = { _, user ->
                 if (user.pin.isNotEmpty()) {
-                    showPinDialog(user)
+                    PasswordDialog(this@LoginActivity).show(user.pin) { isSuccess ->
+                        if (isSuccess) {
+                            repository.setActiveUser(user)
+                            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                            intent.putExtra("id", user.id)
+                            mainLauncher.launch(intent)
+                        } else {
+                            showError(binding.root, R.string.wrong_password)
+                        }
+                    }
                 } else {
                     repository.setActiveUser(user)
-
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     intent.putExtra("id", user.id)
+
                     mainLauncher.launch(intent)
                 }
             }
@@ -72,6 +82,7 @@ class LoginActivity : BaseActivity() {
 
     override fun onResume() {
         super.onResume()
+
         getData()
     }
 
@@ -101,28 +112,5 @@ class LoginActivity : BaseActivity() {
     private fun getData() {
         val users = repository.getAllUser()
         adapter.submitList(users)
-    }
-
-    private fun showPinDialog(user: User) {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle(R.string.input_pin)
-        val viewInflated = LayoutInflater.from(this).inflate(R.layout.dialog_input_pin, null, false)
-        builder.setView(viewInflated)
-        builder.setPositiveButton(android.R.string.ok) { dialog, _ ->
-            val inputPassword = viewInflated.findViewById<TextInputEditText>(R.id.inputPin)
-            val password = inputPassword.text.toString()
-            if (password == user.pin) {
-                repository.setActiveUser(user)
-
-                val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                intent.putExtra("id", user.id)
-                mainLauncher.launch(intent)
-                dialog.dismiss()
-            } else {
-                inputPassword.error = getString(R.string.wrong_password)
-            }
-        }
-        builder.setNegativeButton(android.R.string.cancel) { dialog, _ -> dialog.cancel() }
-        builder.show()
     }
 }

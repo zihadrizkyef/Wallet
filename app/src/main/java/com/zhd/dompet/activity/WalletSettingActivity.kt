@@ -8,6 +8,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.zhd.dompet.R
 import com.zhd.dompet.databinding.ActivityWalletSettingBinding
+import com.zhd.dompet.dialog.PasswordDialog
 import com.zhd.dompet.utils.Extra
 import com.zhd.dompet.utils.ExtraAction
 import com.zhd.repository.repo.UserRepository
@@ -45,7 +46,18 @@ class WalletSettingActivity : BaseActivity() {
                 .setTitle(R.string.delete_wallet_question)
                 .setPositiveButton(R.string.yes) { dialog, _ ->
                     if (userRepository.getActiveUser()!!.pin.isNotEmpty()) {
-                        showPinDialog(walletId)
+                        PasswordDialog(this).show(userRepository.getActiveUser()!!.pin) { isSuccess ->
+                            if (isSuccess) {
+                                repository.deleteWallet(walletId)
+                                val intent = Intent()
+                                intent.putExtra(Extra.ACTION, ExtraAction.DELETE)
+                                setResult(RESULT_OK, intent)
+
+                                finish()
+                            } else {
+                                showError(binding.root, R.string.wrong_password)
+                            }
+                        }
                     } else {
                         repository.deleteWallet(walletId)
                         val intent = Intent()
@@ -58,28 +70,5 @@ class WalletSettingActivity : BaseActivity() {
                 }.setNegativeButton(R.string.cancel) { dialog, _ -> dialog.dismiss() }
                 .show()
         }
-    }
-
-    private fun showPinDialog(walletId: Long) {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle(R.string.input_pin)
-        val viewInflated = LayoutInflater.from(this).inflate(R.layout.dialog_input_pin, null, false)
-        builder.setView(viewInflated)
-        builder.setPositiveButton(android.R.string.ok) { _, _ ->
-            val inputPassword = viewInflated.findViewById<TextInputEditText>(R.id.inputPin)
-            val password = inputPassword.text.toString()
-            if (password == userRepository.getActiveUser()!!.pin) {
-                repository.deleteWallet(walletId)
-                val intent = Intent()
-                intent.putExtra(Extra.ACTION, ExtraAction.DELETE)
-                setResult(RESULT_OK, intent)
-
-                finish()
-            } else {
-                inputPassword.error = getString(R.string.wrong_password)
-            }
-        }
-        builder.setNegativeButton(android.R.string.cancel) { dialog, _ -> dialog.cancel() }
-        builder.show()
     }
 }
