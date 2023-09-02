@@ -60,6 +60,6 @@ class MainActivity : BaseActivity() {
         binding.recyclerView.isVisible = wallets.isNotEmpty()
         binding.textNoItem.isVisible = wallets.isEmpty()
 
-        binding.textValueTotalBalance.text = transactionRepository.getUserTotalBalance(wallets.map { it.id }).toCurrency()
+        binding.textValueTotalBalance.text = repository.getUserTotalBalance().toCurrency()
     }
 }

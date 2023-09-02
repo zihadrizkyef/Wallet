@@ -41,13 +41,6 @@ class TransactionRepository {
         }
     }
 
-    fun getUserTotalBalance(walletIds: List<Long>): Double =
-        Realm.getDefaultInstance()
-            .where(Transaction::class.java)
-            .`in`("id", walletIds.toTypedArray())
-            .sum("value")
-            .toDouble()
-
     fun deleteTransaction(id: Long) = Realm.getDefaultInstance().executeTransaction { realm ->
         realm.where(Transaction::class.java)
             .equalTo("id", id)
