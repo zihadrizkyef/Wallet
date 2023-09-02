@@ -25,13 +25,16 @@
     <string name="name_cannot_empty">Nama tidak boleh kosong</string>
     <string name="password_cannot_empty">Sandi tidak boleh kosong</string>
     <string name="account_not_found_register"><![CDATA[Akun tidak ditemukan? <b>Daftar</b>]]></string>
-    <string name="register_success">Pendaftaran sukses!</string>
+    <string name="register_success">Pendaftaran berhasil!</string>
     <string name="name_required">Nama <font color='#FF0000'>*</font></string>
     <string name="wrong_password">Sandi salah!</string>
     <string name="delete_account">Hapus akun</string>
-    <string name="delete_account_question">Anda yakin ingin menghapus akun?</string>
-    <string name="yes">Yes</string>
+    <string name="delete_account_question">Anda yakin ingin menghapus akun ini?</string>
+    <string name="yes">Ya</string>
     <string name="cancel">Batal</string>
-    <string name="update_success">Update sukses!</string>
-    <string name="delete_account_success">Sukses menghapus akun!</string>
+    <string name="update_success">Update berhasil!</string>
+    <string name="delete_account_success">Berhasil menghapus akun!</string>
+    <string name="hi_n">Halo %s!</string>
+    <string name="delete_wallet">Hapus dompet</string>
+    <string name="delete_wallet_question">Anda yakin ingin menghapus dompet ini</string>
 </resources>

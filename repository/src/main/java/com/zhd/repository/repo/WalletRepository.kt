@@ -2,7 +2,9 @@ package com.zhd.repository.repo
 
 import com.zhd.repository.generateUniqueId
 import com.zhd.repository.model.Transaction
+import com.zhd.repository.model.User
 import com.zhd.repository.model.Wallet
+import com.zhd.repository.repo.UserPref.activeUser
 import io.realm.Realm
 
 class WalletRepository {
@@ -41,6 +43,13 @@ class WalletRepository {
         }
 
         return totalBalance
+    }
+
+    fun updateWallet(id: Long, name: String) = Realm.getDefaultInstance().executeTransaction { realm ->
+        val wallet = getSingleById(id).apply {
+            this.name = name
+        }
+        realm.insertOrUpdate(wallet)
     }
 
     fun deleteWallet(id: Long) = Realm.getDefaultInstance().executeTransaction { realm ->
