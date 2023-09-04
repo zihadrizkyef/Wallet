@@ -1,12 +1,11 @@
 package com.zhd.repository.repo
 
-import com.zhd.repository.generateUniqueId
 import com.zhd.repository.model.User
 import io.realm.Realm
 
 class UserRepository {
     fun createUser(name: String, pin: String) = Realm.getDefaultInstance().executeTransaction { realm ->
-        val newId = realm.generateUniqueId(User::class.java)
+        val newId = RealmId.generateUniqueId(User::class.java)
 
         val user = User().apply {
             id = newId

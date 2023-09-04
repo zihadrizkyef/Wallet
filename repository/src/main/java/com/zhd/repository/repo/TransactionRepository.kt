@@ -1,6 +1,5 @@
 package com.zhd.repository.repo
 
-import com.zhd.repository.generateUniqueId
 import com.zhd.repository.model.Transaction
 import com.zhd.repository.model.Wallet
 import io.realm.Realm
@@ -8,7 +7,7 @@ import java.util.*
 
 class TransactionRepository {
     fun createTransaction(walletId: Long, title: String, desc: String, value: Double) = Realm.getDefaultInstance().executeTransaction { realm ->
-        val newId = realm.generateUniqueId(Transaction::class.java)
+        val newId = RealmId.generateUniqueId(Transaction::class.java)
 
         val transaction = Transaction().apply {
             id = newId

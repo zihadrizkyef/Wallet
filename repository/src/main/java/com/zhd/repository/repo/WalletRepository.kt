@@ -1,15 +1,11 @@
 package com.zhd.repository.repo
 
-import com.zhd.repository.generateUniqueId
-import com.zhd.repository.model.Transaction
-import com.zhd.repository.model.User
 import com.zhd.repository.model.Wallet
-import com.zhd.repository.repo.UserPref.activeUser
 import io.realm.Realm
 
 class WalletRepository {
     fun createWallet(name: String) = Realm.getDefaultInstance().executeTransaction { realm ->
-        val newId = realm.generateUniqueId(Wallet::class.java)
+        val newId = RealmId.generateUniqueId(Wallet::class.java)
 
         val wallet = Wallet().apply {
             id = newId
