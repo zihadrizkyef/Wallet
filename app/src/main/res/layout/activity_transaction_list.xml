@@ -65,7 +65,7 @@
         android:gravity="center"
         android:padding="16dp"
         android:text="@string/no_transaction_info"
-        android:textColor="@color/grey"
+        android:textColor="?attr/colorOnPrimary"
         android:textSize="32sp"
         android:visibility="gone"
         app:fontFamily="@font/roboto_light"
