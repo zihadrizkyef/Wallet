@@ -29,7 +29,7 @@ class TransactionListActivity : BaseActivity() {
     }
     private val repository by lazy { TransactionRepository() }
     private val walletRepository by lazy { WalletRepository() }
-    private var walletId = 0L
+    private var walletId = ""
     private var filterStartDate: Date? = null
     private var filterEndDate: Date? = null
 
@@ -53,7 +53,7 @@ class TransactionListActivity : BaseActivity() {
         binding = ActivityTransactionListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        walletId = intent.getLongExtra("id", 0)
+        walletId = intent.getStringExtra("id")!!
         setupView()
         getData()
     }

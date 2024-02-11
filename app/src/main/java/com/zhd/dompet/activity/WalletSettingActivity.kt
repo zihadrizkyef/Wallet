@@ -24,7 +24,7 @@ class WalletSettingActivity : BaseActivity() {
         binding = ActivityWalletSettingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val walletId = intent.getLongExtra("id", 0L)
+        val walletId = intent.getStringExtra("id")!!
         val wallet = repository.getSingleById(walletId)
         binding.inputName.setText(wallet.name)
         binding.buttonSave.setOnClickListener {

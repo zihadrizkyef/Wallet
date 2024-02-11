@@ -14,7 +14,7 @@ class TransactionDetailActivity : BaseActivity() {
         binding = ActivityTransactionDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val transactionId = intent.getLongExtra("id", 0L)
+        val transactionId = intent.getStringExtra("id")!!
         val transaction = repository.getTransactionById(transactionId)
         transaction?.let {
             binding.textValue.text = it.value.toCurrency()

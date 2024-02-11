@@ -7,9 +7,8 @@ import io.realm.annotations.PrimaryKey
 import java.util.*
 
 open class Wallet: RealmObject() {
-    @PrimaryKey
-    var id = 0L
-    var userId = 0L
+    var id = UUID.randomUUID().toString()
+    var userId = ""
 
     var name = ""
     var transactions: RealmList<Transaction> = realmListOf()
@@ -22,9 +21,7 @@ open class Wallet: RealmObject() {
         if (id != other.id) return false
         if (name != other.name) return false
         if (transactions != other.transactions) return false
-        if (date != other.date) return false
-
-        return true
+        return date == other.date
     }
 
     override fun hashCode(): Int {

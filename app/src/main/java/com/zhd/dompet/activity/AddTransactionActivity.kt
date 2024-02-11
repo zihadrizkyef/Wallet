@@ -21,7 +21,7 @@ class AddTransactionActivity : BaseActivity() {
         binding = ActivityAddTransactionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val walletId = intent.getLongExtra("id", 0L)
+        val walletId = intent.getStringExtra("id")!!
         binding.textWalletName.text = walletRepository.getSingleById(walletId).name
 
         binding.buttonSymbol.setOnClickListener {

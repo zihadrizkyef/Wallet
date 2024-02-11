@@ -5,10 +5,7 @@ import io.realm.Realm
 
 class WalletRepository {
     fun createWallet(name: String) = Realm.getDefaultInstance().executeTransaction { realm ->
-        val newId = RealmId.generateUniqueId(Wallet::class.java)
-
         val wallet = Wallet().apply {
-            id = newId
             this.userId = UserPref.activeUser!!.id
             this.name = name
         }
@@ -22,7 +19,7 @@ class WalletRepository {
         )
     }
 
-    fun getSingleById(id: Long): Wallet = Realm.getDefaultInstance().let { realm ->
+    fun getSingleById(id: String): Wallet = Realm.getDefaultInstance().let { realm ->
         realm.copyFromRealm(
             realm.where(Wallet::class.java).equalTo("id", id).findFirst()!!
         )
@@ -41,14 +38,14 @@ class WalletRepository {
         return totalBalance
     }
 
-    fun updateWallet(id: Long, name: String) = Realm.getDefaultInstance().executeTransaction { realm ->
+    fun updateWallet(id: String, name: String) = Realm.getDefaultInstance().executeTransaction { realm ->
         val wallet = getSingleById(id).apply {
             this.name = name
         }
         realm.insertOrUpdate(wallet)
     }
 
-    fun deleteWallet(id: Long) = Realm.getDefaultInstance().executeTransaction { realm ->
+    fun deleteWallet(id: String) = Realm.getDefaultInstance().executeTransaction { realm ->
         realm.where(Wallet::class.java)
             .equalTo("id", id)
             .findFirst()

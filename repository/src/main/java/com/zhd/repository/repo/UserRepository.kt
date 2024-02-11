@@ -4,11 +4,9 @@ import com.zhd.repository.model.User
 import io.realm.Realm
 
 class UserRepository {
-    fun createUser(name: String, pin: String) = Realm.getDefaultInstance().executeTransaction { realm ->
-        val newId = RealmId.generateUniqueId(User::class.java)
 
+    fun createUser(name: String, pin: String) = Realm.getDefaultInstance().executeTransaction { realm ->
         val user = User().apply {
-            id = newId
             this.name = name
             this.pin = pin
         }
@@ -42,7 +40,7 @@ class UserRepository {
 
     fun getActiveUser() = UserPref.activeUser
 
-    fun deleteUser(id: Long) = Realm.getDefaultInstance().executeTransaction { realm ->
+    fun deleteUser(id: String) = Realm.getDefaultInstance().executeTransaction { realm ->
         realm.where(User::class.java)
             .equalTo("id", id)
             .findFirst()

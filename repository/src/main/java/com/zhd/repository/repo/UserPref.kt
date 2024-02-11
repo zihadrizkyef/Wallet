@@ -5,5 +5,5 @@ import com.chibatching.kotpref.gsonpref.gsonNullablePref
 import com.zhd.repository.model.User
 
 object UserPref : KotprefModel() {
-    var activeUser by gsonNullablePref<User>()
-}
+        var activeUser by gsonNullablePref<User>()
+    }
