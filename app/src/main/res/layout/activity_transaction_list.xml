@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_abstract1">
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/textWalletName"
@@ -11,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
-        android:textColor="?attr/colorPrimary"
+        android:textColor="?attr/colorOnPrimary"
         android:textSize="32sp"
         app:fontFamily="@font/roboto_black"
         app:layout_constraintEnd_toStartOf="@+id/buttonSetting"
@@ -30,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/textWalletName"
         app:srcCompat="@drawable/ic_setting"
-        app:tint="?attr/colorPrimary" />
+        app:tint="?attr/colorOnPrimary" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonCalendar"
@@ -76,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="@string/total_balance"
-        android:textColor="?attr/colorOnBackground"
+        android:textColor="?attr/colorOnPrimary"
         app:fontFamily="@font/roboto_medium"
         app:layout_constraintBottom_toTopOf="@id/textValueTotalBalance"
         app:layout_constraintStart_toStartOf="parent" />
@@ -86,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:textColor="?attr/colorSecondary"
+        android:textColor="?attr/colorOnPrimary"
         android:textSize="24sp"
         app:fontFamily="@font/roboto_medium"
         app:layout_constraintBottom_toBottomOf="parent"

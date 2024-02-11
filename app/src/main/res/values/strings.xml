@@ -79,4 +79,5 @@
     <string name="show_all">Show all</string>
     <string name="from_n">From %s</string>
     <string name="until_n">Until %s</string>
+    <string name="choose_your_account">Choose your account!</string>
 </resources>

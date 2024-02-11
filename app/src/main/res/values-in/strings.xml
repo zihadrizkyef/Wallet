@@ -43,4 +43,5 @@
     <string name="show_all">Tampilkan semua</string>
     <string name="from_n">Dari %s</string>
     <string name="until_n">Hingga %s</string>
+    <string name="choose_your_account">Pilih akun anda!</string>
 </resources>

@@ -37,12 +37,12 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="5dp"
         android:gravity="center_vertical"
+        android:textColor="?attr/colorOnPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guide1"
         app:layout_constraintStart_toEndOf="@id/iconSymbol"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_add"
-        app:tint="@color/green"
         tools:text="1.035.000" />
 
     <com.google.android.material.textview.MaterialTextView
@@ -50,6 +50,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
+        android:textColor="?attr/colorOnPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guide2"
         app:layout_constraintStart_toStartOf="@+id/guide1"
@@ -62,6 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:gravity="end|center_vertical"
+        android:textColor="?attr/colorOnPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/guide2"
